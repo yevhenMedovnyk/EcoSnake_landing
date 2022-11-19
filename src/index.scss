@@ -1,0 +1,296 @@
+@import "./style/vars";
+@import "./style/extends";
+@import "./style/reset";
+
+html{
+	font-size: 62.5%;
+	height: 100%;
+}
+body{
+	background-color: $bgColorMain;
+	font-size: 2.4rem;
+	line-height: calc(30 / 24);
+	&.lock{
+		overflow: hidden;
+	}
+}
+
+.wrapper{
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: hidden;
+}
+.page{
+	flex: 1 0 auto;
+}
+.container{
+	@extend %container;
+}
+.containerLarge{
+	@extend %containerL;
+}
+.btn{
+	display: inline-flex;
+	background: #B2AE7F;
+	border-radius: 5px;
+	color: #000000;
+	transition: .3s;
+	&:hover{
+		background-color:#c1bd93;
+	}
+}
+.row{
+	display: flex;
+	justify-content: space-between;
+}
+
+.title-l{
+	font-family: $secondFont;
+	font-size: 4rem;
+	line-height: calc(52 / 40);
+}
+.title-m{
+	font-size: 3.2rem;
+	line-height: calc(39 / 32);
+}
+
+//-------------------HEADER
+
+.header {
+
+		&__wrapper {
+			padding-block: 6.05%;
+			align-items: center;
+		}
+
+		&__logo {}
+
+		&__menu {}
+}
+.logo {
+	z-index: 99;
+}
+.menu {
+
+	&__cover.active{
+		position: absolute;
+		inset: 0;
+		background-color: rgba(#F4F2DD, .4);
+	}
+		&__list {
+			z-index: 99;
+			column-gap: 11.8rem;
+			margin-inline: 2.3rem;
+			font-size: 2rem;
+			line-height: calc(25 / 20);
+			@media(max-width:1024px){
+				position: fixed;
+				flex-direction: column;
+				justify-content: start;
+				row-gap: 3.5rem;
+				padding-top: 20%;
+				top: 0;
+				right: -6%;
+				width: 75%;
+				height: 100%;
+				background-color: $bgColorSecond;
+				overflow: auto;
+				font-size: 3.2rem;
+				transition: .3s;
+				transform: translateX(150%);
+				&.active{
+					transform: translateX(0);
+				}
+			}
+		}
+
+		&__item {
+			@media(max-width:1024px){
+				text-align: center;
+
+			}
+		}
+		&__link {
+			position: relative;
+			&::before{
+				content:'';
+				position: absolute;
+				bottom: -2px;
+				width: 100%;
+				height: 2px;
+				background-color: #000000;
+				transform: scale(0);
+				transition: .3s;
+			}
+			&:hover::before{
+				transform: scale(1);
+			}
+			@media(max-width:1024px){
+				display: block;
+				line-height: 1.5;
+			}
+		}
+}
+
+.burger-menu{
+	z-index: 99;
+	display: none;
+	width: 3.5rem;
+	height: 2.6rem;
+	position: relative;
+	background: none;
+	margin-right: 2rem;
+	&::before,
+	&::after,
+	span{
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background-color: #000000;
+		border-radius: 2px;
+		transition: .3s;
+	}
+	&::before{
+		content: '';
+		bottom: 0;
+	}
+	&::after{
+		content: '';
+		top: 0;
+	}
+	span{
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	@media(max-width:1024px){
+		display: block;
+	}
+}
+.burger-menu.active{
+	&::before{
+		transform: rotate(-45deg);
+		bottom: 47%;
+	}
+	&::after{
+		transform: rotate(45deg);
+		top: 46%;
+	}
+	span{
+		opacity: 0;
+	}
+}
+
+//------------------------Header-bottom
+
+.header-bottom {
+
+	&__wrapper {
+		padding-block: 3.33% 10.76%;
+		column-gap: 2rem;
+	}
+
+	&__content {
+		flex: 1 1 55.93%;
+	}
+
+	&__title {
+		font-family: $secondFont;
+		font-weight: 500;
+		font-size: 6.4rem;
+		line-height: calc(83 / 64);
+		max-width: 10.27em;
+		margin-bottom: 1.25em;
+	}
+
+	&__text {
+		max-width: 26.96em;
+		margin-bottom: 4.417em;
+	}
+
+	&__links {
+		display: flex;
+		align-items: center;
+		column-gap: 5.4rem;
+	}
+
+	&__btn {
+		font-size: 3.2rem;
+		line-height: calc(39 / 32);
+		padding: 0.625em 0.688em;
+	}
+
+	&__link {
+		position: relative;
+		font-size: 2rem;
+		line-height: calc(25 / 20);
+		&::before{
+			content:'';
+			position: absolute;
+			bottom: -2px;
+			width: 100%;
+			height: 2px;
+			background-color: #000000;
+			transform: scale(0);
+			transition: .3s;
+		}
+		&:hover::before{
+			transform: scale(1);
+		}
+	}
+
+	&__image {
+		flex: 1 1 44.07%;
+		align-self: center;
+		overflow: hidden;
+		border-radius: 5px;
+	}
+}
+
+//-----------------------Gallery
+
+.gallery {
+
+	&__items {}
+
+	&__item {
+		display: flex;
+		column-gap: 1.77%;
+	}
+}
+
+.gallery-item {
+	text-align: right;
+
+	&__content{
+		flex: 1 1 50%;
+	}
+
+	&__title {
+		max-width: 12.72em;
+		margin-left: 8.48%;
+		padding-top: 19.4%;
+		&--left{
+			margin-left: auto;
+			margin-right: 8.48%;
+		}
+	}
+	
+
+	&__image {
+		flex: 1 1 50%;
+	}
+}
+
+.row-reverce {
+	flex-direction: row-reverse;
+}
+
+.gallery-item:nth-child(2n){
+	text-align: left;
+}
+
+
+
