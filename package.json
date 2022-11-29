@@ -41,6 +41,7 @@
 		"webpack-dev-server": "^4.11.1"
 	},
 	"dependencies": {
-		"node-sass": "^7.0.3"
+		"node-sass": "^7.0.3",
+		"swiper": "^8.4.4"
 	}
 }
